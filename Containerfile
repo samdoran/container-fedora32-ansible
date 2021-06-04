@@ -1,4 +1,4 @@
-FROM fedora:32
+FROM quay.io/fedora/fedora:32-x86_64
 ENV container=docker
 
 RUN dnf makecache && dnf -y update && dnf clean all
@@ -22,7 +22,7 @@ RUN dnf makecache \
   rm -f /lib/systemd/system/sockets.target.wants/*initctl*; \
   rm -f /lib/systemd/system/basic.target.wants/*; \
   rm -f /lib/systemd/system/anaconda.target.wants/*; \
-  pip3 install q epdb ansible
+  pip3 install q epdb ansible-core
 
 RUN sed -i -e 's/^\(Defaults\s*requiretty\)/#--- \1/'  /etc/sudoers
 
